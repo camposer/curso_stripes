@@ -1,0 +1,1 @@
+1.- Implementar una acción llamada ImprimirTablaActionBean que muestre una tabla como la del ejemplo HolaMundoServlet
