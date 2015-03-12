@@ -1,1 +1,1 @@
-1.- Implementar una acción llamada ImprimirTablaActionBean que muestre una tabla como la del ejemplo HolaMundoServlet
+1.- Implementar el listar de Persona. Ahora mismo persona.jsp imprime una tabla estática de personas, la idea es que esta lista salga de "base de datos". Deberá obtener las personas del PersonaService y pasarlas a la JSP para su impresión de forma dinámica.
