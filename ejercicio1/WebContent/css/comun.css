@@ -1,0 +1,28 @@
+h1 {
+	text-align: center;
+}
+
+.tabla-centrada {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.tabla-formulario td:nth-child(1) {
+	text-align: right;
+}
+
+.tabla-datos th {
+	background-color: grey;
+}
+
+.tabla-datos tr:nth-child(odd) {
+	background-color: lightgrey;
+}
+
+.tabla-datos tr:nth-child(even) {
+	background-color: darkgrey;
+}
+
+.tabla-datos a {
+	color: black;
+}
