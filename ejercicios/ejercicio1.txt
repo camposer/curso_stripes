@@ -1,1 +1,3 @@
 1.- Implementar el listar de Persona. Ahora mismo persona.jsp imprime una tabla estática de personas, la idea es que esta lista salga de "base de datos". Deberá obtener las personas del PersonaService y pasarlas a la JSP para su impresión de forma dinámica.
+
+2.- Implementar el agregar de Persona. Cuando llene los datos del formulario, si hago clic en el botón de agregar se debea agregar una nueva persona a la "base de datos" y presentar de nuevo la página inicial con la lista actualizada.

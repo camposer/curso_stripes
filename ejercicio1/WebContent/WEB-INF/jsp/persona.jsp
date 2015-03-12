@@ -58,30 +58,16 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>1</td>
-				<td>Juan</td>
-				<td>Pérez</td>
-				<td>2012-02-01</td>
-				<td><a href="#">mostrar</a></td>
-				<td><a href="#">eliminar</a></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Juan</td>
-				<td>Pérez</td>
-				<td>2012-02-01</td>
-				<td><a href="#">mostrar</a></td>
-				<td><a href="#">eliminar</a></td>
-			</tr>
-			<tr>
-				<td>1</td>
-				<td>Juan</td>
-				<td>Pérez</td>
-				<td>2012-02-01</td>
-				<td><a href="#">mostrar</a></td>
-				<td><a href="#">eliminar</a></td>
-			</tr>
+			<c:forEach var="p" items="${actionBean.personas}">
+				<tr>
+					<td>${p.id}</td>
+					<td>${p.nombre}</td>
+					<td>${p.apellido}</td>
+					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${p.fechaNacimiento}"/></td>
+					<td><a href="#">mostrar</a></td>
+					<td><a href="#">eliminar</a></td>
+				</tr>
+			</c:forEach>
 		</tbody>
 	</table>	
 	
