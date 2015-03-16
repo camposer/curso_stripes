@@ -22,27 +22,27 @@
 </head>
 <body>
 	<h1>Personas</h1>
-	<form action="" method="post">
+	<s:form beanclass="action.PersonaActionBean" method="post">
 		<table id="form-persona" class="tabla-centrada tabla-formulario">
 			<tr>
-				<td>Nombre:</td>
-				<td><input type="text" name="nombre"></td>
+				<td><s:label for="persona.nombre"/>:</td>
+				<td><input type="text" name="persona.nombre" value="${actionBean.persona.nombre}"></td>
 			</tr>
 			<tr>
-				<td>Apellido:</td>
-				<td><input type="text" name="apellido"></td>
+				<td><s:label for="persona.apellido"/>:</td>
+				<td><s:text name="persona.apellido"/></td>
 			</tr>
 			<tr>
-				<td>Fecha de Nacimiento:</td>
-				<td><input type="text" name="fechaNacimiento"></td>
+				<td><s:label for="persona.fechaNacimiento"/>:</td>
+				<td><s:text name="persona.fechaNacimiento"/></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="guardar">
+					<s:submit name="agregar" value="Guardar"/>
 				</td>
 			</tr>
 		</table>
-	</form>
+	</s:form>
 	
 	<br>
 	
