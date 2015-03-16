@@ -17,7 +17,16 @@ public class PersonaActionBean implements ActionBean {
 	private ActionBeanContext ctx;
 	private PersonaService personaService;
 	private Persona persona;
+	private Integer personaId;
 	
+	public Integer getPersonaId() {
+		return personaId;
+	}
+
+	public void setPersonaId(Integer personaId) {
+		this.personaId = personaId;
+	}
+
 	public Persona getPersona() {
 		return persona;
 	}
@@ -42,6 +51,17 @@ public class PersonaActionBean implements ActionBean {
 	public Resolution agregar() {
 		personaService.agregarPersona(getPersona());
 		return new RedirectResolution("/Persona.action");
+	}
+	
+	public Resolution eliminar() {
+		String spersonaId = ctx.getRequest().getParameter("personaId");
+		personaService.eliminarPersona(Integer.parseInt(spersonaId));
+		return new RedirectResolution("/Persona.action");
+	}
+	
+	public Resolution mostrar() {
+		setPersona(personaService.obtenerPersona(getPersonaId())); // Ver atributos flash!
+		return new ForwardResolution(VIEW);
 	}
 	
 	@Override

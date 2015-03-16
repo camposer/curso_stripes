@@ -64,8 +64,16 @@
 					<td>${p.nombre}</td>
 					<td>${p.apellido}</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${p.fechaNacimiento}"/></td>
-					<td><a href="#">mostrar</a></td>
-					<td><a href="#">eliminar</a></td>
+					<td>
+						<a href="Persona.action?mostrar=&personaId=${p.id}">mostrar</a><!-- No!! -->
+					</td>
+					<td>
+						<s:link beanclass="action.PersonaActionBean"
+							event="eliminar">
+							<s:param name="personaId">${p.id}</s:param>
+							eliminar
+						</s:link>
+					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
