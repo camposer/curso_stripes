@@ -17,9 +17,9 @@ class PersonaDaoImpl implements PersonaDao {
 		
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat(PATRON);
-			agregar(new Persona("Juan", "Pérez", sdf.parse("1990-02-01")));
-			agregar(new Persona("María", "García", sdf.parse("1980-01-01")));
-			agregar(new Persona("Pedro", "González"));
+			agregar(new Persona("Juan", "Pérez", "j@perez.com", sdf.parse("1990-02-01")));
+			agregar(new Persona("María", "García", "m@garcia.com", sdf.parse("1980-01-01")));
+			agregar(new Persona("Pedro", "González", "p@gonzalez.com"));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}

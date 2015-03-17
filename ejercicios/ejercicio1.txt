@@ -8,3 +8,23 @@
 
 5.- Implementar el modificar de Persona. Cuando llene los datos del formulario después de hacer clic en mostrar, si presiono "guardar" se deberá modificar la persona especificada en la "base de datos" y presentar de nuevo la página inicial con la lista actualizada.
 
+------
+
+6.- Agregar un nuevo campo "correo electrónico" a Persona y su formulario.
+7.- Incluir las siguientes validaciones con anotaciones @Validate
+	a.- El nombre no puede estar vacío y no contener números
+	b.- El apellido no puede estar vacío y tener una longitud mínima de 3 caracteres.
+	c.- El correo electrónico debe ser válido
+
+@Validate(field = "nombre", required = true, on = { "agregar", "modificar" })
+
+
+
+
+
+
+
+
+
+
+

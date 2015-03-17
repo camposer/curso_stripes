@@ -39,6 +39,7 @@
 <body>
 	<h1>Personas</h1>
 	<s:form name="personaForm" beanclass="action.PersonaActionBean" method="post">
+		<s:errors/>
 		<s:hidden name="persona.id" id="personaId"/>
 		<table id="form-persona" class="tabla-centrada tabla-formulario">
 			<tr>
@@ -48,6 +49,10 @@
 			<tr>
 				<td><s:label for="persona.apellido"/>:</td>
 				<td><s:text name="persona.apellido"/></td>
+			</tr>
+			<tr>
+				<td><s:label for="persona.correoElectronico"/>:</td>
+				<td><s:text name="persona.correoElectronico"/></td>
 			</tr>
 			<tr>
 				<td><s:label for="persona.fechaNacimiento"/>:</td>
@@ -69,6 +74,7 @@
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>Apellido</th>
+				<th>Correo</th>
 				<th>Fecha de Nacimiento</th>
 				<th>Mostrar</th>
 				<th>Eliminar</th>
@@ -80,6 +86,7 @@
 					<td>${p.id}</td>
 					<td>${p.nombre}</td>
 					<td>${p.apellido}</td>
+					<td>${p.correoElectronico}</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${p.fechaNacimiento}"/></td>
 					<td>
 						<a href="Persona.action?mostrar=&personaId=${p.id}">mostrar</a><!-- No!! -->
