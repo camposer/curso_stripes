@@ -19,14 +19,31 @@
 			text-align: center;
 		}
 	</style>
+	<script>
+		var enviar = function() {
+			var guardar = document.getElementById("guardar");
+			var personaId = document.getElementById("personaId").value;
+
+			if (personaId)
+				guardar.name= "modificar";
+			
+			if (!document.getElementById("nombre").value) {
+				window.alert("Falta el nombre");
+//				return false;
+			}
+			
+			return true;
+		};
+	</script>
 </head>
 <body>
 	<h1>Personas</h1>
-	<s:form beanclass="action.PersonaActionBean" method="post">
+	<s:form name="personaForm" beanclass="action.PersonaActionBean" method="post">
+		<s:hidden name="persona.id" id="personaId"/>
 		<table id="form-persona" class="tabla-centrada tabla-formulario">
 			<tr>
 				<td><s:label for="persona.nombre"/>:</td>
-				<td><input type="text" name="persona.nombre" value="${actionBean.persona.nombre}"></td>
+				<td><input id="nombre" type="text" name="persona.nombre" value="${actionBean.persona.nombre}"></td>
 			</tr>
 			<tr>
 				<td><s:label for="persona.apellido"/>:</td>
@@ -38,7 +55,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<s:submit name="agregar" value="Guardar"/>
+					<s:submit id="guardar" name="agregar" value="Guardar" onclick="return enviar()"/>
 				</td>
 			</tr>
 		</table>

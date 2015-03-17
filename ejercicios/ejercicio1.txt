@@ -6,3 +6,5 @@
 
 4.- Implementar el mostrar de Persona. Al hacer clic sobre el enlace de mostrar de cualquier elemento de la tabla, se deberán mostrar los datos de la persona y mantener la lista de resultados.
 
+5.- Implementar el modificar de Persona. Cuando llene los datos del formulario después de hacer clic en mostrar, si presiono "guardar" se deberá modificar la persona especificada en la "base de datos" y presentar de nuevo la página inicial con la lista actualizada.
+

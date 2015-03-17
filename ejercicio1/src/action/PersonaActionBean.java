@@ -48,11 +48,25 @@ public class PersonaActionBean implements ActionBean {
 		return new ForwardResolution(VIEW);
 	}
 	
+	public Resolution guardar() {
+		if (getPersona().getId() != null)
+			personaService.modificarPersona(getPersona());
+		else
+			personaService.agregarPersona(getPersona());
+		
+		return new RedirectResolution("/Persona.action");
+	}
+
 	public Resolution agregar() {
 		personaService.agregarPersona(getPersona());
 		return new RedirectResolution("/Persona.action");
 	}
 	
+	public Resolution modificar() {
+		personaService.modificarPersona(getPersona());
+		return new RedirectResolution("/Persona.action");
+	}
+
 	public Resolution eliminar() {
 		String spersonaId = ctx.getRequest().getParameter("personaId");
 		personaService.eliminarPersona(Integer.parseInt(spersonaId));
