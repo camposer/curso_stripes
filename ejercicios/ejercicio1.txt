@@ -11,14 +11,18 @@
 ------
 
 6.- Agregar un nuevo campo "correo electrónico" a Persona y su formulario.
-7.- Incluir las siguientes validaciones con anotaciones @Validate
+7.- Incluir las siguientes validaciones con anotaciones y métodos de validación
 	a.- El nombre no puede estar vacío y no contener números
 	b.- El apellido no puede estar vacío y tener una longitud mínima de 3 caracteres.
 	c.- El correo electrónico debe ser válido
 
 @Validate(field = "nombre", required = true, on = { "agregar", "modificar" })
 
+-------
 
+8.- Cambiar el correo electrónico por un campo de tipo CorreoElectronico. La nueva clase deberá tener dos atributos: usuario y dominio
+9.- Implementar un conversor que transforme los campos de correo electrónico al objeto
+10.- Implementar un formateador que transforme los correos electrónico a string
 
 
 

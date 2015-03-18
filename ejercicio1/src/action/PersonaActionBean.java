@@ -13,34 +13,38 @@ import net.sourceforge.stripes.validation.EmailTypeConverter;
 import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidateNestedProperties;
+import net.sourceforge.stripes.validation.ValidationErrorHandler;
 import net.sourceforge.stripes.validation.ValidationErrors;
 import net.sourceforge.stripes.validation.ValidationMethod;
+import net.sourceforge.stripes.validation.ValidationState;
 import service.PersonaService;
 import service.PersonaServiceFactory;
 
-public class PersonaActionBean implements ActionBean {
+public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 	private static final String VIEW = "/WEB-INF/jsp/persona.jsp";
 	private ActionBeanContext ctx;
 	private PersonaService personaService;
 
 	@ValidateNestedProperties({
 		@Validate(field = "nombre", required = true, 
-				on = { "agregar", "modificar" } /*, mask = "[a-zA-Z ]*"*/),
+				on = { "agregar", "modificar" } /*, expression = "!this.matches('.*[0-9]+.*')" */),
 		@Validate(field = "apellido", required = true, minlength = 3, 
 				on = { "agregar", "modificar" }),
 		@Validate(field = "correoElectronico", required = true, 
 				on = { "agregar", "modificar" }, converter = EmailTypeConverter.class)
 	})
 	private Persona persona;
-	
+
+	@Validate(field = "personaId", required = true, on = { "mostrar", "eliminar" })
 	private Integer personaId;
 	
-	@ValidationMethod(on = { "agregar", "modificar" })
+	@ValidationMethod(on = { "agregar", "modificar"}, when = ValidationState.ALWAYS)
 	public void validarNombre(ValidationErrors errors) {
-		String nombre = getPersona().getNombre();
-		
-		if (nombre.matches("[0-9]*")) {
-			errors.add("nombre", new SimpleError("Nombre inválido"));
+		if (getPersona() != null) {
+			String nombre = getPersona().getNombre();
+			if (nombre.matches(".*[0-9]+.*")) {
+				errors.add("nombre", new SimpleError("{0} no puede contener números"));
+			}
 		}
 	}
 	
@@ -111,6 +115,13 @@ public class PersonaActionBean implements ActionBean {
 	@Override
 	public void setContext(ActionBeanContext ctx) {
 		this.ctx = ctx;
+	}
+
+	@Override
+	public Resolution handleValidationErrors(ValidationErrors errors)
+			throws Exception {
+		// TODO Se puede cambiar este comportamiento
+		return new ForwardResolution(VIEW);
 	}
 
 }

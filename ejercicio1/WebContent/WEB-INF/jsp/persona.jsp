@@ -56,7 +56,9 @@
 			</tr>
 			<tr>
 				<td><s:label for="persona.fechaNacimiento"/>:</td>
-				<td><s:text name="persona.fechaNacimiento"/></td>
+				<td>
+					<s:text name="persona.fechaNacimiento" formatPattern="dd-MM-yyyy"/>
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -87,7 +89,7 @@
 					<td>${p.nombre}</td>
 					<td>${p.apellido}</td>
 					<td>${p.correoElectronico}</td>
-					<td><fmt:formatDate pattern="yyyy-MM-dd" value="${p.fechaNacimiento}"/></td>
+					<td><s:format value="${p.fechaNacimiento}" formatPattern="dd-MM-yyyy"/></td>
 					<td>
 						<a href="Persona.action?mostrar=&personaId=${p.id}">mostrar</a><!-- No!! -->
 					</td>
