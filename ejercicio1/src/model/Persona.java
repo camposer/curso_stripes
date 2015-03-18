@@ -6,17 +6,17 @@ public class Persona {
 	private Integer id;
 	private String nombre;
 	private String apellido;
-	private String correoElectronico; 
+	private CorreoElectronico correoElectronico; 
 	private Date fechaNacimiento;
 	
 	public Persona() {
 	}
 	
-	public Persona(String nombre, String apellido, String correoElectronico) {
+	public Persona(String nombre, String apellido, CorreoElectronico correoElectronico) {
 		this(nombre, apellido, correoElectronico, null);
 	}
 	
-	public Persona(String nombre, String apellido, String correoElectronico, Date fechaNacimiento) {
+	public Persona(String nombre, String apellido, CorreoElectronico correoElectronico, Date fechaNacimiento) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.correoElectronico = correoElectronico;
@@ -48,11 +48,11 @@ public class Persona {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 
-	public String getCorreoElectronico() {
+	public CorreoElectronico getCorreoElectronico() {
 		return correoElectronico;
 	}
 
-	public void setCorreoElectronico(String correoElectronico) {
+	public void setCorreoElectronico(CorreoElectronico correoElectronico) {
 		this.correoElectronico = correoElectronico;
 	}
 }

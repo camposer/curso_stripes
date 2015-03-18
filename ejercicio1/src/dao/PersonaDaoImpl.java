@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import model.CorreoElectronico;
 import model.Persona;
 
 class PersonaDaoImpl implements PersonaDao {
@@ -17,9 +18,9 @@ class PersonaDaoImpl implements PersonaDao {
 		
 		try {
 			SimpleDateFormat sdf = new SimpleDateFormat(PATRON);
-			agregar(new Persona("Juan", "Pérez", "j@perez.com", sdf.parse("1990-02-01")));
-			agregar(new Persona("María", "García", "m@garcia.com", sdf.parse("1980-01-01")));
-			agregar(new Persona("Pedro", "González", "p@gonzalez.com"));
+			agregar(new Persona("Juan", "Pérez", new CorreoElectronico("j", "perez.com"), sdf.parse("1990-02-01")));
+			agregar(new Persona("María", "García", new CorreoElectronico("m", "garcia.com"), sdf.parse("1980-01-01")));
+			agregar(new Persona("Pedro", "González", new CorreoElectronico("p", "gonzalez.com")));
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
