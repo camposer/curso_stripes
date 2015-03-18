@@ -88,7 +88,7 @@
 					<td>${p.id}</td>
 					<td>${p.nombre}</td>
 					<td>${p.apellido}</td>
-					<td>${p.correoElectronico}</td>
+					<td><s:format value="${p.correoElectronico}" formatType="at"/></td>
 					<td><s:format value="${p.fechaNacimiento}" formatPattern="dd-MM-yyyy"/></td>
 					<td>
 						<a href="Persona.action?mostrar=&personaId=${p.id}">mostrar</a><!-- No!! -->
