@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Hola mundo!</title>
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#clic").click(function() {
+				var titulo = $("<h1></h1>");
+				titulo.html("Hola mundo!");
+				titulo.appendTo("#contenido");
+			});
+			
+			$("#ajax").click(function() {
+				var url = "/basico/Javascript.action";
+				var settings = {
+					type: "get", // post, put, delete, head, etc...
+					// contentType: "application/json", // Lo que envío
+					// dataType: "json" // Lo que recibo
+				};
+
+				var ajax = $.ajax(url, settings);
+				ajax.done(function(response) {
+					var json = eval(response);
+					$("#contenido").html("nombre = " + json.nombre + 
+							", serial = " + json.serial);
+				});
+			});
+		});
+	
+	</script>
+</head>
+<body>
+	<div id="contenido"></div>
+	<input type="button" id="clic" value="clic">
+	<input type="button" id="ajax" value="ajax">
+</body>
+</html>
