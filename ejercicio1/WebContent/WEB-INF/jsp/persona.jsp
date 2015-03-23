@@ -22,10 +22,10 @@
 	
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script>
-		Date.prototype.formatMMDDYYYY = function(){
-		    return (this.getMonth() + 1) + 
-		    "/" +  this.getDate() +
-		    "/" +  this.getFullYear();
+		var formatDate = function(date){
+		    return (date.getMonth() + 1) + 
+			    "/" +  date.getDate() +
+			    "/" +  date.getFullYear();
 		};	
 	
 		var enviar = function() {
@@ -59,9 +59,9 @@
 					html += "<td>" + personas[i].nombre + "</td>";
 					html += "<td>" + personas[i].apellido + "</td>";
 					html += "<td>" + correo + "</td>";
-					html += "<td>" + personas[i].fechaNacimiento + "</td>";
-					html += "<td><a href='${contextPath}/Persona.action?mostrar=mostrar&id=" + personas[i].id + "'>mostrar</a></td>";
-					html += "<td><a href='${contextPath}/Persona.action?eliminar=eliminar&id=" + personas[i].id + "'>eliminar</a></td>";
+					html += "<td>" + formatDate(personas[i].fechaNacimiento) + "</td>";
+					html += "<td><a href='${contextPath}/Persona.action?mostrar=&personaId=" + personas[i].id + "'>mostrar</a></td>";
+					html += "<td><a href='${contextPath}/Persona.action?eliminar=&personaId=" + personas[i].id + "'>eliminar</a></td>";
 					html += "</tr>";
 				}
 				
