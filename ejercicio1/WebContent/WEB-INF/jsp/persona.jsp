@@ -19,7 +19,15 @@
 			text-align: center;
 		}
 	</style>
+	
+	<script type="text/javascript" src="js/jquery.js"></script>
 	<script>
+		Date.prototype.formatMMDDYYYY = function(){
+		    return (this.getMonth() + 1) + 
+		    "/" +  this.getDate() +
+		    "/" +  this.getFullYear();
+		};	
+	
 		var enviar = function() {
 			var guardar = document.getElementById("guardar");
 			var personaId = document.getElementById("personaId").value;
@@ -34,6 +42,33 @@
 			
 			return true;
 		};
+		
+		$(document).ready(function() {
+			var url = "Persona.action?listar=";
+			
+			$.ajax(url, {
+				type: "get"
+			}).done(function(response) {
+				var personas = eval(response);
+				var html = "";
+				for (var i in personas) {
+					var correo = personas[i].correoElectronico.usuario + " at " + personas[i].correoElectronico.dominio; 
+					
+					html += "<tr>";
+					html += "<td>" + personas[i].id + "</td>";
+					html += "<td>" + personas[i].nombre + "</td>";
+					html += "<td>" + personas[i].apellido + "</td>";
+					html += "<td>" + correo + "</td>";
+					html += "<td>" + personas[i].fechaNacimiento + "</td>";
+					html += "<td><a href='${contextPath}/Persona.action?mostrar=mostrar&id=" + personas[i].id + "'>mostrar</a></td>";
+					html += "<td><a href='${contextPath}/Persona.action?eliminar=eliminar&id=" + personas[i].id + "'>eliminar</a></td>";
+					html += "</tr>";
+				}
+				
+				
+				$("#tabla-personas tbody").html(html);
+			});
+		});
 	</script>
 </head>
 <body>
@@ -83,25 +118,6 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="p" items="${actionBean.personas}">
-				<tr>
-					<td>${p.id}</td>
-					<td>${p.nombre}</td>
-					<td>${p.apellido}</td>
-					<td><s:format value="${p.correoElectronico}" formatType="at"/></td>
-					<td><s:format value="${p.fechaNacimiento}" formatPattern="dd-MM-yyyy"/></td>
-					<td>
-						<a href="Persona.action?mostrar=&personaId=${p.id}">mostrar</a><!-- No!! -->
-					</td>
-					<td>
-						<s:link beanclass="action.PersonaActionBean"
-							event="eliminar">
-							<s:param name="personaId">${p.id}</s:param>
-							eliminar
-						</s:link>
-					</td>
-				</tr>
-			</c:forEach>
 		</tbody>
 	</table>	
 	

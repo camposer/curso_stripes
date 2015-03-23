@@ -9,6 +9,7 @@ import net.sourceforge.stripes.action.DefaultHandler;
 import net.sourceforge.stripes.action.ForwardResolution;
 import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
+import net.sourceforge.stripes.ajax.JavaScriptResolution;
 import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidateNestedProperties;
@@ -34,9 +35,13 @@ public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 				on = { "agregar", "modificar" }, converter = CorreoElectronicoTypeConverter.class)
 	})
 	private Persona persona;
-
+	
 	@Validate(field = "personaId", required = true, on = { "mostrar", "eliminar" })
 	private Integer personaId;
+
+	public PersonaActionBean() {
+		personaService = PersonaServiceFactory.createPersonaService();
+	}
 	
 	@ValidationMethod(on = { "agregar", "modificar"}, when = ValidationState.ALWAYS)
 	public void validarNombre(ValidationErrors errors) {
@@ -48,33 +53,13 @@ public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 		}
 	}
 	
-	public Integer getPersonaId() {
-		return personaId;
-	}
-
-	public void setPersonaId(Integer personaId) {
-		this.personaId = personaId;
-	}
-
-	public Persona getPersona() {
-		return persona;
-	}
-
-	public void setPersona(Persona persona) {
-		this.persona = persona;
-	}
-
-	public PersonaActionBean() {
-		personaService = PersonaServiceFactory.createPersonaService();
-	}
-	
-	public List<Persona> getPersonas() {
-		return personaService.obtenerPersonas();
-	}
-	
 	@DefaultHandler
 	public Resolution inicio() {
 		return new ForwardResolution(VIEW);
+	}
+
+	public Resolution listar() {
+		return new JavaScriptResolution(getPersonas());
 	}
 	
 	public Resolution guardar() {
@@ -105,6 +90,26 @@ public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 	public Resolution mostrar() {
 		setPersona(personaService.obtenerPersona(getPersonaId())); // Ver atributos flash!
 		return new ForwardResolution(VIEW);
+	}
+	
+	public Integer getPersonaId() {
+		return personaId;
+	}
+
+	public void setPersonaId(Integer personaId) {
+		this.personaId = personaId;
+	}
+
+	public Persona getPersona() {
+		return persona;
+	}
+
+	public void setPersona(Persona persona) {
+		this.persona = persona;
+	}
+
+	public List<Persona> getPersonas() {
+		return personaService.obtenerPersonas();
 	}
 	
 	@Override
