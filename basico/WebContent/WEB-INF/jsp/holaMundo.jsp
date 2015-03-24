@@ -19,5 +19,11 @@
 			
 	Hola mundo (EL)! ${actionBean.nombre}<br>
 	Hola mundo (Java)! <%= ((HolaMundoActionBean)request.getAttribute("actionBean")).getNombre() %>
+	
+	<ul>
+		<c:forEach var="n" items="${actionBean.numeros}">
+			<li>${n}</li>		
+		</c:forEach>
+	</ul>
 </body>
 </html>
