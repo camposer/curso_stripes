@@ -6,10 +6,12 @@ import model.Persona;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dao.PersonaDao;
 
 @Service
+@Transactional // A través de aspectos maneja begin, commit y rollback 
 public class PersonaServiceImpl implements PersonaService {
 	@Autowired
 	private PersonaDao personaDao;

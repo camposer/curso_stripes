@@ -55,7 +55,7 @@
 				var personas = eval(response);
 				var html = "";
 				for (var i in personas) {
-					var correo = personas[i].correoElectronico.usuario + " at " + personas[i].correoElectronico.dominio; 
+					var correo = personas[i].correoElectronico; 
 					
 					html += "<tr>";
 					html += "<td>" + personas[i].id + "</td>";

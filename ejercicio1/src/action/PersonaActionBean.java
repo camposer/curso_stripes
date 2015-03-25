@@ -11,6 +11,7 @@ import net.sourceforge.stripes.action.RedirectResolution;
 import net.sourceforge.stripes.action.Resolution;
 import net.sourceforge.stripes.ajax.JavaScriptResolution;
 import net.sourceforge.stripes.integration.spring.SpringBean;
+import net.sourceforge.stripes.validation.EmailTypeConverter;
 import net.sourceforge.stripes.validation.SimpleError;
 import net.sourceforge.stripes.validation.Validate;
 import net.sourceforge.stripes.validation.ValidateNestedProperties;
@@ -19,7 +20,6 @@ import net.sourceforge.stripes.validation.ValidationErrors;
 import net.sourceforge.stripes.validation.ValidationMethod;
 import net.sourceforge.stripes.validation.ValidationState;
 import service.PersonaService;
-import converter.CorreoElectronicoTypeConverter;
 
 public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 	private static final String VIEW = "/WEB-INF/jsp/persona.jsp";
@@ -33,7 +33,7 @@ public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 		@Validate(field = "apellido", required = true, minlength = 3, 
 				on = { "agregar", "modificar" }),
 		@Validate(field = "correoElectronico", required = true, 
-				on = { "agregar", "modificar" }, converter = CorreoElectronicoTypeConverter.class)
+				on = { "agregar", "modificar" }, converter = EmailTypeConverter.class)
 	})
 	private Persona persona;
 	
