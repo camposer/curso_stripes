@@ -101,6 +101,7 @@
 			<tr>
 				<td colspan="2">
 					<s:submit id="guardar" name="agregar" value="Guardar" onclick="return enviar()"/>
+					<s:submit id="guardar" name="guardarTemporal" value="Guardar temporalmente"/>
 				</td>
 			</tr>
 		</table>

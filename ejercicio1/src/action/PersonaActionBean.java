@@ -2,6 +2,8 @@ package action;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import model.Persona;
 import net.sourceforge.stripes.action.ActionBean;
 import net.sourceforge.stripes.action.ActionBeanContext;
@@ -70,11 +72,17 @@ public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 
 	public Resolution agregar() {
 		personaService.agregarPersona(getPersona());
+		HttpSession session = ctx.getRequest().getSession();
+		session.setAttribute("persona", null);
+		
 		return new RedirectResolution("/Persona.action");
 	}
 	
 	public Resolution modificar() {
 		personaService.modificarPersona(getPersona());
+		HttpSession session = ctx.getRequest().getSession();
+		session.setAttribute("persona", null);
+
 		return new RedirectResolution("/Persona.action");
 	}
 
@@ -89,6 +97,13 @@ public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 		return new ForwardResolution(VIEW);
 	}
 	
+	public Resolution guardarTemporal() {
+		HttpSession session = ctx.getRequest().getSession();
+		session.setAttribute("persona", null);
+		session.setAttribute("persona", getPersona());
+		return new RedirectResolution("/Persona.action");
+	}
+	
 	public Integer getPersonaId() {
 		return personaId;
 	}
@@ -98,6 +113,12 @@ public class PersonaActionBean implements ActionBean, ValidationErrorHandler {
 	}
 
 	public Persona getPersona() {
+		HttpSession session = ctx.getRequest().getSession();
+
+		Persona p = (Persona)session.getAttribute("persona");
+		if (p != null)
+			persona = p;
+		
 		return persona;
 	}
 
