@@ -7,3 +7,12 @@ CREATE TABLE persona (
 	correo_electronico VARCHAR(50),
 	PRIMARY KEY (id)
 );
+
+INSERT INTO persona(nombre, apellido, fecha_nacimiento, correo_electronico)
+VALUES('Juan', 'Pérez', '1990-01-01', 'juan@perez.com');
+INSERT INTO persona(nombre, apellido, fecha_nacimiento, correo_electronico)
+VALUES('María', 'García', '2000-02-01', 'maria@garcia.com');
+INSERT INTO persona(nombre, apellido, correo_electronico)
+VALUES('Pedro', 'González', 'pedro@gonzalez.com');
+
+SELECT * FROM persona;
