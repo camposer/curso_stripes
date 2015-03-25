@@ -5,15 +5,21 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+
 import model.CorreoElectronico;
 import model.Persona;
 
-class PersonaDaoImpl implements PersonaDao {
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class PersonaDaoImpl implements PersonaDao {
 	private static final String PATRON = "yyyy-MM-dd";
 	private List<Persona> personas;
 	private int contador = 1;
-	
-	public PersonaDaoImpl() {
+
+	@PostConstruct // Ocurre después de la inyección de la dependencia!
+	public void init() {
 		personas = new ArrayList<Persona>();
 		
 		try {
@@ -25,7 +31,7 @@ class PersonaDaoImpl implements PersonaDao {
 			e.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void agregar(Persona p) {
 		p.setId(contador++);

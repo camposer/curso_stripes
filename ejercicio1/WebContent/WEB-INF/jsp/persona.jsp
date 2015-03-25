@@ -23,9 +23,12 @@
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script>
 		var formatDate = function(date){
-		    return (date.getMonth() + 1) + 
-			    "/" +  date.getDate() +
-			    "/" +  date.getFullYear();
+			if (date)
+		    	return (date.getMonth() + 1) + 
+			    	"/" +  date.getDate() +
+			    	"/" +  date.getFullYear();
+			else
+				return "";
 		};	
 	
 		var enviar = function() {

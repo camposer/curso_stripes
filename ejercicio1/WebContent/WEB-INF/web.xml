@@ -5,6 +5,17 @@
 	version="3.1">
 	<display-name>ejercicio1</display-name>
 
+	<!-- Spring config -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/spring-context.xml</param-value>
+	</context-param>
+
+	<!-- Stripes config -->
 	<filter>
 		<display-name>Stripes Filter</display-name>
 		<filter-name>StripesFilter</filter-name>
@@ -17,6 +28,10 @@
 			<param-name>Extension.Packages</param-name>
 			<param-value>formatter</param-value>
 		</init-param>
+		<init-param>
+			<param-name>Interceptor.Classes</param-name>
+			<param-value>net.sourceforge.stripes.integration.spring.SpringInterceptor</param-value>
+		</init-param>		
 	</filter>
 	<filter-mapping>
 		<filter-name>StripesFilter</filter-name>

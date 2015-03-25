@@ -30,6 +30,16 @@
 - Deberá crear un nuevo resolver que devuelva la lista de personas en formato JSON (JavaScriptResolution). 
 - Al mostrar la página de persona deberá realizar una petición AJAX que cargue los datos en pantalla.
 
+------
+
+12.- Delegar la instanciación de objetos y sus dependencias en Spring.
+- Incluir dependencias en el POM
+- Configurar el ContextListener de Spring en el web.xml
+- Configurar el Interceptor de Stripes en el web.xml
+- Configurar el service y dao de Persona con anotaciones
+- Configurar el fichero de contexto de spring para que gestione services y daos.
+- Configurar bean de Spring dentro del ActionBean
+
 
 
 

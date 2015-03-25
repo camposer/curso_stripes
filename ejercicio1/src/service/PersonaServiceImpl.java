@@ -3,16 +3,17 @@ package service;
 import java.util.List;
 
 import model.Persona;
-import dao.PersonaDao;
-import dao.PersonaDaoFactory;
 
-class PersonaServiceImpl implements PersonaService {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import dao.PersonaDao;
+
+@Service
+public class PersonaServiceImpl implements PersonaService {
+	@Autowired
 	private PersonaDao personaDao;
 	
-	public PersonaServiceImpl() {
-		personaDao = PersonaDaoFactory.createPersonaDao();
-	}
-
 	@Override
 	public void agregarPersona(Persona p) {
 		personaDao.agregar(p);
