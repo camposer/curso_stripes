@@ -1,12 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="comun.jsp" %>
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<title>Personas</title>
-	<link rel="stylesheet" type="text/css" href="${contextPath}/css/comun.css">
+	
+<s:layout-render name="layout.jsp">
+	<s:layout-component name="contenido">
+
 	<style>
 		#form-persona tr:last-child td {
 			text-align: center;
@@ -20,7 +18,6 @@
 		}
 	</style>
 	
-	<script type="text/javascript" src="js/jquery.js"></script>
 	<script>
 		var formatDate = function(date){
 			if (date)
@@ -73,8 +70,7 @@
 			});
 		});
 	</script>
-</head>
-<body>
+
 	<h1>Personas</h1>
 	<s:form name="personaForm" beanclass="action.PersonaActionBean" method="post">
 		<s:errors/>
@@ -83,7 +79,7 @@
 			<tr>
 				<td><s:label for="persona.nombre"/>:</td>
 				<td><input id="nombre" type="text" name="persona.nombre" value="${actionBean.persona.nombre}"></td>
-			</tr>
+			</tr> 
 			<tr>
 				<td><s:label for="persona.apellido"/>:</td>
 				<td><s:text name="persona.apellido"/></td>
@@ -125,13 +121,5 @@
 		</tbody>
 	</table>	
 	
-</body>
-</html>
-
-
-
-
-
-
-
-
+	</s:layout-component>	
+</s:layout-render>
